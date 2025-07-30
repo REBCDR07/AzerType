@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AzerType - Jeu de Dactylographie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="/config/tailwind.js"></script>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-gradient-to-r from-primary to-accent backdrop-blur-lg border-b border-opacity-20 border-white py-4 px-6 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <i class="fas fa-keyboard text-white text-2xl mr-3"></i>
+                <a href="#" class="text-white text-2xl font-bold">AzerType</a>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+                <a href="#" class="text-white font-medium hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md transition flex items-center" onclick="showSection('home')">
+                    <i class="fas fa-home mr-2"></i>Accueil
+                </a>
+                <a href="#" class="text-white font-medium hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md transition flex items-center" onclick="showSection('play')">
+                    <i class="fas fa-play mr-2"></i>Jouer
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero-pattern bg-gradient-to-r from-primary to-accent text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 float">Bienvenue sur AzerType !</h1>
+            <p class="text-lg sm:text-xl max-w-3xl mx-auto mb-10 opacity-90">
+                Testez et améliorez vos compétences en dactylographie avec ce jeu interactif et moderne. Progressez à votre rythme et devenez un maître du clavier !
+            </p>
+            <button class="bg-white text-primary font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:bg-gray-100 transition transform hover:-translate-y-1" onclick="showSection('play')">
+                <i class="fas fa-play mr-2"></i>Commencer à jouer
+            </button>
+            <!-- Presentation Grid -->
+            <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div class="bg-white text-gray-800 rounded-2xl p-6 shadow-lg card-hover">
+                    <i class="fas fa-keyboard text-primary text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Le Projet</h3>
+                    <p class="text-gray-600">AzerType est un jeu de dactylographie interactif conçu pour rendre l'apprentissage de la frappe amusant et engageant, avec différents niveaux de difficulté.</p>
+                </div>
+                <div class="bg-white text-gray-800 rounded-2xl p-6 shadow-lg card-hover">
+                    <i class="fas fa-bullseye text-accent text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">But</h3>
+                    <p class="text-gray-600">Améliorer vos compétences en dactylographie de manière ludique, en vous challengeant avec des mots variés et des chronomètres.</p>
+                </div>
+                <div class="bg-white text-gray-800 rounded-2xl p-6 shadow-lg card-hover">
+                    <i class="fas fa-trophy text-success text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Objectifs</h3>
+                    <p class="text-gray-600">Devenir plus rapide, plus précis et maîtriser le clavier pour exceller dans vos activités numériques quotidiennes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Play Section -->
+    <section id="play" class="hidden py-12 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-10">
+                <i class="fas fa-gamepad text-primary mr-3"></i>Jouer à AzerType
+            </h2>
+
+            <!-- Difficulty Selection -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+                <div class="difficulty-option active bg-white rounded-xl p-6 shadow-lg border-2 border-primary cursor-pointer transition transform hover:-translate-y-1 card-hover" data-difficulty="easy">
+                    <div class="text-center">
+                        <i class="fas fa-seedling text-green-500 text-2xl mb-3"></i>
+                        <h3 class="font-bold text-xl mb-2">Facile</h3>
+                        <p class="text-gray-600">120s • Mots courts</p>
+                    </div>
+                </div>
+                <div class="difficulty-option bg-white rounded-xl p-6 shadow-lg border-2 border-gray-200 cursor-pointer transition transform hover:-translate-y-1 card-hover" data-difficulty="medium">
+                    <div class="text-center">
+                        <i class="fas fa-star text-yellow-500 text-2xl mb-3"></i>
+                        <h3 class="font-bold text-xl mb-2">Moyen</h3>
+                        <p class="text-gray-600">90s • Mots moyens</p>
+                    </div>
+                </div>
+                <div class="difficulty-option bg-white rounded-xl p-6 shadow-lg border-2 border-gray-200 cursor-pointer transition transform hover:-translate-y-1 card-hover" data-difficulty="hard">
+                    <div class="text-center">
+                        <i class="fas fa-crown text-red-500 text-2xl mb-3"></i>
+                        <h3 class="font-bold text-xl mb-2">Difficile</h3>
+                        <p class="text-gray-600">60s • Mots longs</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Stats -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover">
+                    <span class="text-4xl font-bold text-primary" id="score">0</span>
+                    <div class="mt-2 text-gray-600">
+                        <i class="fas fa-trophy mr-2"></i>Score
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover">
+                    <span class="text-4xl font-bold text-primary" id="timer">120</span>
+                    <div class="mt-2 text-gray-600">
+                        <i class="fas fa-clock mr-2"></i>Temps restant
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover">
+                    <span class="text-4xl font-bold text-primary" id="wordsRemaining">50</span>
+                    <div class="mt-2 text-gray-600">
+                        <i class="fas fa-list mr-2"></i>Mots restants
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="h-4 bg-gray-200 rounded-full mb-10 overflow-hidden">
+                <div id="progressBar" class="h-full bg-gradient-to-r from-primary to-accent relative shimmer"></div>
+            </div>
+
+            <!-- Word Display -->
+            <div class="bg-gradient-to-r from-primary to-accent rounded-2xl p-8 sm:p-12 text-center mb-10 shadow-xl">
+                <div id="currentWord" class="text-4xl sm:text-5xl font-bold text-white word-appear">Appuyez sur Démarrer</div>
+            </div>
+
+            <!-- Input -->
+            <div class="text-center mb-8">
+                <input type="text" id="wordInput" class="w-full max-w-md text-xl sm:text-2xl py-4 px-6 rounded-xl border-2 border-gray-300 focus:border-primary focus:outline-none text-center" placeholder="Tapez le mot ici" disabled>
+            </div>
+
+            <!-- Game Controls -->
+            <div class="text-center mb-8 flex flex-wrap justify-center gap-4">
+                <button id="startGame" class="bg-gradient-to-r from-primary to-accent text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:opacity-90 transition">
+                    <i class="fas fa-play mr-2"></i>Démarrer
+                </button>
+                <button type="button" id="pauseGame" class="hidden bg-yellow-500 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:bg-yellow-600 transition">
+                    <i class="fas fa-pause mr-2"></i>Pause
+                </button>
+                <button type="button" id="resetGame" class="bg-gray-500 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:bg-gray-600 transition">
+                    <i class="fas fa-refresh mr-2"></i>Reset
+                </button>
+            </div>
+
+            <!-- Message Area -->
+            <div id="messageArea" class="text-center min-h-[50px]"></div>
+        </div>
+    </section>
+
+    <!-- Game Over mode -->
+    <div id="gameOverModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 modal-appear">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl sm:text-3xl font-bold text-gray-800">
+                    <i class="fas fa-flag-checkered text-primary mr-3"></i>
+                    Partie terminée !
+                </h3>
+            </div>
+            <div id="gameResults" class="mb-6"></div>
+            <div class="flex justify-center gap-4">
+                <button type="button" class="bg-gradient-to-r from-primary to-accent text-white font-bold py-3 px-6 rounded-xl text-lg shadow-lg hover:opacity-90 transition" onclick="startNewGame()">
+                    <i class="fas fa-play mr-2"></i>Rejouer
+                </button>
+                <button type="button" id="closeModal" class="bg-gray-500 text-white font-bold py-3 px-6 rounded-xl text-lg shadow-lg hover:bg-gray-600 transition">
+                    <i class="fas fa-times mr-2"></i>Fermer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <div class="flex items-center justify-center md:justify-start mb-4">
+                        <i class="fas fa-keyboard text-primary text-3xl mr-3"></i>
+                        <h3 class="text-2xl font-bold">AzerType</h3>
+                    </div>
+                    <p class="text-gray-400">Tapez plus vite, tapez mieux !</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Suivez-moi</h4>
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <a href="https://github.com/REBCDR07" class="text-gray-400 hover:text-white transition"><i class="fab fa-github text-2xl"></i></a>
+                        <a href="https://www.linkedin.com/in/n-e-ronald-bill-hounnou-7a7a67322/" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin text-2xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-400">
+                <p>&copy; 2025 AzerType</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
